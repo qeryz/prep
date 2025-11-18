@@ -1,6 +1,14 @@
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  background-color: #f4f4f4;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
   font-weight: 400;
 
   font-synthesis: none;
@@ -10,16 +18,28 @@
 }
 
 .container {
-  margin: 0 auto;
-  max-width: 500px;
-  gap: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 400px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: visible;
 }
 
-.search-input {
+.search-box-results {
   display: flex;
-  gap: 6px;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.search-input-wrapper {
+  display: flex;
+  gap: 10px;
   align-items: center;
-  justify-content: center;
+  padding: 5px;
 }
 
 .search-bar {
@@ -29,11 +49,41 @@
   background-color: #efefef;
   border-radius: 10px;
   border-color: #dbdbdb;
+  flex-grow: 1;
 }
+
 .filtered-list {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  height: 150px;
   gap: 2px;
   list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow-y: auto;
+}
+
+.filtered-list li {
+  padding: 10px;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.filtered-list li:last-child {
+  border-bottom: none;
+}
+
+.status-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.status-filter select {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #dbdbdb;
+  background-color: #efefef;
 }
