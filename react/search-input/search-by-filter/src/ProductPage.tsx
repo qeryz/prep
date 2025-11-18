@@ -99,17 +99,33 @@ const ProductPage = () => {
 
   return (
     <div className="container">
-      <div className="search-input">
-        <label htmlFor="name-input">Name</label>
-        <input
-          className="search-bar"
-          type="text"
-          id="name-input"
-          placeholder="Search for name"
-          name="name"
-          value={name}
-          onChange={handleNameChange}
-        />
+      <div className="search-box-results">
+        <div className="search-input-wrapper">
+          <label htmlFor="name-input">Name</label>
+          <input
+            className="search-bar"
+            type="text"
+            id="name-input"
+            placeholder="Search for name"
+            name="name"
+            value={name}
+            onChange={handleNameChange}
+          />
+        </div>
+        <ul className="filtered-list" aria-live="polite" aria-atomic="true">
+          {filteredUsers?.length === 0 ? (
+            <li>No users found.</li>
+          ) : (
+            filteredUsers?.map(({ id, name, status }) => (
+              <li key={id}>
+                {name} - {status}
+              </li>
+            ))
+          )}
+        </ul>
+      </div>
+
+      <div className="status-filter">
         <label htmlFor="status-select">Filter by Status</label>
         <select
           id="status-select"
@@ -117,23 +133,12 @@ const ProductPage = () => {
           name="status"
           onChange={handleStatusChange}
         >
+          <option>All</option>
           <option>Active</option>
           <option>Inactive</option>
-          <option>All</option>
+          <option>Pending</option>
         </select>
       </div>
-
-      <ul className="filtered-list" aria-live="polite" aria-atomic="true">
-        {filteredUsers?.length === 0 ? (
-          <li>No users found.</li>
-        ) : (
-          filteredUsers?.map(({ id, name, status }) => (
-            <li key={id}>
-              {name} {status}
-            </li>
-          ))
-        )}
-      </ul>
     </div>
   );
 };
