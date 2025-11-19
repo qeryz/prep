@@ -36,8 +36,10 @@ const filterUsers = (users: User[], filters: Filters) => {
   let filteredUsers: User[] = [...users];
 
   if (name.length > 0) {
-    filteredUsers = filteredUsers.filter((user) =>
-      user.name.toLowerCase().startsWith(name.toLowerCase())
+    filteredUsers = filteredUsers.filter(
+      (user) =>
+        user.name.toLowerCase().includes(name.toLowerCase()) ||
+        user.email.toLowerCase().includes(name.toLowerCase())
     );
   }
   if (status !== "All") {
@@ -116,9 +118,9 @@ const ProductPage = () => {
           {filteredUsers?.length === 0 ? (
             <li>No users found.</li>
           ) : (
-            filteredUsers?.map(({ id, name, status }) => (
+            filteredUsers?.map(({ id, name, email, status }) => (
               <li key={id}>
-                {name} - {status}
+                {name} - {email} - {status}
               </li>
             ))
           )}
