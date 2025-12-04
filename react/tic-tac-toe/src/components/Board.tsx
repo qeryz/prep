@@ -91,10 +91,10 @@ export const Board = ({ size }: { size: number }) => {
 
   const statusMessage = useMemo(() => {
     if (winner) {
-      return `🎉 Winner: ${winner}!`;
+      return `Winner: ${winner}!`;
     }
     if (isDraw) {
-      return `🤝 It's a Draw!`;
+      return `It's a Draw!`;
     }
     return `Current Player: ${currentPlayer}`;
   }, [winner, isDraw, currentPlayer]);
